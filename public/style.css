@@ -1,8 +1,8 @@
 :root {
   --ink: #111111;
   --ink-2: #3d3d3d;
-  --muted: #787878;
-  --faint: #a6a6a6;
+  --muted: #616161;
+  --faint: #6b6b6b;
   --line: #e5e5e3;
   --line-2: #d5d5d2;
   --bg: #f4f4f2;
@@ -97,7 +97,7 @@ body { display: flex; }
   border-top: 1px solid var(--line);
 }
 .side-foot .who { font-size: 12.5px; color: var(--ink-2); font-weight: 500; }
-.side-foot .hint { font-size: 11.5px; color: var(--faint); margin-top: 4px; line-height: 1.5; }
+.side-foot .hint { font-size: 12.5px; color: var(--faint); margin-top: 4px; line-height: 1.5; }
 
 /* ---------------- 主区域 ---------------- */
 main {
@@ -223,6 +223,21 @@ main {
 }
 .task:hover { border-color: var(--line-2); transform: translateY(-1px); }
 .task.done { opacity: .62; }
+/* 卡片里再套卡片 = 视觉噪音：内层条目改用分隔线，不再重复描边 */
+.card .task,
+.card .row {
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 11px 0;
+}
+.card .task:first-child,
+.card .row:first-child { border-top: none; padding-top: 2px; }
+.card .task:hover,
+.card .row:hover { transform: none; background: transparent; }
+.card .task:hover .t-title,
+.card .row:hover .row-title { color: var(--ink); }
 .task.done .t-title { text-decoration: line-through; }
 .t-row { display: flex; align-items: flex-start; gap: 9px; }
 .t-check {
@@ -251,7 +266,7 @@ main {
 .task.done .t-check { background: #fff; border-color: var(--line-2); }
 .task.done .t-check::after { content: "✓"; color: var(--ink); font-size: 10px; }
 .t-notes {
-  font-size: 11.5px;
+  font-size: 12.5px;
   color: var(--muted);
   margin: 7px 0 0 24px;
   line-height: 1.55;
@@ -268,7 +283,7 @@ main {
   margin: 9px 0 0 24px;
 }
 .pill {
-  font-size: 10.5px;
+  font-size: 11.5px;
   padding: 2px 7px;
   border-radius: 20px;
   border: 1px solid var(--line);
@@ -310,7 +325,7 @@ main {
 .row:hover { border-color: var(--line-2); }
 .row-main { flex: 1; min-width: 0; }
 .row-title { font-size: 13.5px; line-height: 1.5; word-break: break-word; }
-.row-sub { font-size: 11.5px; color: var(--muted); margin-top: 4px; line-height: 1.6; white-space: pre-wrap; }
+.row-sub { font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.6; white-space: pre-wrap; }
 .row-side { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 
 .empty {
@@ -342,7 +357,7 @@ textarea { resize: vertical; min-height: 74px; line-height: 1.6; }
 label.f { display: block; }
 label.f > span {
   display: block;
-  font-size: 11.5px;
+  font-size: 12.5px;
   color: var(--muted);
   margin-bottom: 6px;
   letter-spacing: .4px;
@@ -462,7 +477,7 @@ label.f > span {
 .f-item .ic { font-size: 11px; color: var(--faint); width: 26px; flex: 0 0 26px; letter-spacing: .5px; }
 .f-item.active .ic { color: rgba(255,255,255,.7); }
 .f-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.f-size { font-size: 10.5px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.f-size { font-size: 11.5px; color: var(--faint); font-variant-numeric: tabular-nums; }
 .f-item.active .f-size { color: rgba(255,255,255,.6); }
 
 .preview {
@@ -553,7 +568,7 @@ label.f > span {
 }
 @keyframes sp { to { transform: rotate(360deg); } }
 
-.hint-line { font-size: 11.5px; color: var(--faint); line-height: 1.7; margin-top: 8px; }
+.hint-line { font-size: 12.5px; color: var(--faint); line-height: 1.7; margin-top: 8px; }
 
 /* ---------------- 灵感列表 ---------------- */
 .idea-list { margin-top: 12px; }
@@ -579,7 +594,7 @@ label.f > span {
 
 .idea-body { flex: 1; min-width: 0; }
 .idea-txt { font-size: 12.5px; line-height: 1.55; word-break: break-word; }
-.idea-meta { font-size: 10.5px; color: var(--faint); margin-top: 4px; letter-spacing: .2px; }
+.idea-meta { font-size: 11.5px; color: var(--faint); margin-top: 4px; letter-spacing: .2px; }
 
 .idea-row .btn { flex-shrink: 0; align-self: center; opacity: .6; }
 .idea-row:hover .btn { opacity: 1; }
@@ -599,7 +614,7 @@ label.f > span {
 .rv-title { font-size: 12.5px; font-weight: 600; }
 .rv-body { margin: 7px 0 0 15px; display: flex; flex-direction: column; gap: 5px; }
 .rv-line { display: flex; gap: 8px; font-size: 12px; line-height: 1.65; word-break: break-word; }
-.rv-k { flex: 0 0 64px; font-size: 10.5px; color: var(--faint); letter-spacing: .3px; padding-top: 2px; }
+.rv-k { flex: 0 0 64px; font-size: 11.5px; color: var(--faint); letter-spacing: .3px; padding-top: 2px; }
 
 /* ---------------- 灵感牌堆：一叠卡 + 弧扇展开 + 抽牌 ---------------- */
 .deck-stage {
@@ -659,13 +674,13 @@ label.f > span {
 }
 .deck-card.drawn:hover { transform: translateX(0) translateY(-38px) rotate(-2deg) scale(1.06); }
 
-.dc-top { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--faint); letter-spacing: .2px; }
-.dc-pin { margin-left: auto; padding: 1px 6px; border-radius: 20px; background: var(--ink); color: #fff; font-size: 9.5px; letter-spacing: .3px; }
+.dc-top { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--faint); letter-spacing: .2px; }
+.dc-pin { margin-left: auto; padding: 1px 6px; border-radius: 20px; background: var(--ink); color: #fff; font-size: 11.5px; letter-spacing: .3px; }
 .dc-pin.ghost { background: transparent; color: var(--faint); border: 1px solid var(--line); }
 .dc-text {
   flex: 1;
   margin-top: 8px;
-  font-size: 11.5px;
+  font-size: 12.5px;
   line-height: 1.55;
   word-break: break-word;
   display: -webkit-box;
@@ -674,7 +689,7 @@ label.f > span {
   overflow: hidden;
 }
 .dc-foot { display: flex; align-items: center; }
-.dc-tag { font-size: 9.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 20px; padding: 1px 7px; }
+.dc-tag { font-size: 11.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 20px; padding: 1px 7px; }
 .dc-tag.dim { color: var(--faint); }
 
 .deck-foot { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
@@ -723,7 +738,7 @@ label.f > span {
 }
 
 /* 勾选任务的回弹 */
-.t-check.pop { animation: checkPop .34s cubic-bezier(.34, 1.56, .64, 1); }
+.t-check.pop { animation: checkPop .34s cubic-bezier(.22, 1, .36, 1); }
 @keyframes checkPop {
   0% { transform: scale(1); }
   40% { transform: scale(1.3); }

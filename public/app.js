@@ -268,7 +268,7 @@ function viewHome() {
           ${['听力', '阅读', '写作', '口语'].map((k) => `
             <div>
               <div style="font-size:16px;font-weight:600;font-variant-numeric:tabular-nums">${ielts[k] != null ? ielts[k] : '—'}</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:3px">${k}</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">${k}</div>
             </div>`).join('')}
         </div>
         <div class="hint-line">本周已投入 ${st.minutesWeek} 分钟，共 ${st.logsWeekCount} 次打卡记录。</div>
@@ -283,7 +283,7 @@ function viewHome() {
                 <div class="row-title">${esc(r.task_title || '（无标题任务）')}</div>
                 <div class="row-sub">${esc(String(r.learned || '').slice(0, 46))}</div>
               </div>
-              <div style="font-size:10.5px;color:var(--faint);flex:0 0 auto;padding-top:2px">${esc((r.date || '').slice(5).replace('-', '/'))}</div>
+              <div style="font-size:11.5px;color:var(--faint);flex:0 0 auto;padding-top:2px">${esc((r.date || '').slice(5).replace('-', '/'))}</div>
             </div>`).join('')
           : '<div class="empty">勾完任务写下「学到什么」，会记在这里</div>'}
         <div class="hint-line"><a data-act="tab" data-tab="reviews">全部复盘（${(d.reviews || []).length}）</a></div>
@@ -348,7 +348,7 @@ function ideaRow(it, opts) {
 /* 灵感牌堆：最新/置顶的当「最上面那张」，鼠标放上去扇形展开，可洗牌抽一张 */
 function ideaDeck(all) {
   if (!all.length) {
-    return '<div class="empty" style="padding:30px 16px;font-size:11.5px;line-height:1.8">还没有灵感，上面随手记一条<br/>记下的会叠成一叠卡，鼠标放上去自动展开</div>';
+    return '<div class="empty" style="padding:30px 16px;font-size:12.5px;line-height:1.8">还没有灵感，上面随手记一条<br/>记下的会叠成一叠卡，鼠标放上去自动展开</div>';
   }
   const drawnIdea = S.deck.drawnId ? all.find((x) => x.id === S.deck.drawnId) : null;
   const hero = drawnIdea || all[0];
@@ -484,7 +484,7 @@ function viewTasks() {
       return `<div>
         <div class="col-head">${c.label}<span class="n">${items.length}</span></div>
         <div class="col-body">
-          ${items.length ? items.map(taskCard).join('') : '<div class="empty" style="padding:16px;font-size:11.5px">空</div>'}
+          ${items.length ? items.map(taskCard).join('') : '<div class="empty" style="padding:16px;font-size:12.5px">空</div>'}
         </div>
       </div>`;
     }).join('')}
@@ -642,7 +642,7 @@ function viewInterviews() {
         <span class="pill">${esc(iv.stage)}</span>
         <span class="pill ${iv.result === 'pass' ? 'p0' : ''}">${resultText(iv.result)}</span>
         <div style="flex:1"></div>
-        <div style="font-size:11.5px;color:var(--faint)">${esc(iv.date || '')}</div>
+        <div style="font-size:12.5px;color:var(--faint)">${esc(iv.date || '')}</div>
         <button class="btn sm ghost" data-act="open-interview" data-id="${iv.id}">编辑</button>
         <button class="btn sm ghost" data-act="del-interview" data-id="${iv.id}">删除</button>
       </div>
@@ -773,7 +773,7 @@ function renderPreview(f) {
     return `<div class="preview-head"><span>预览</span></div><div class="preview-body" style="display:grid;place-items:center;color:var(--faint);font-size:12.5px">左边选一个文件</div>`;
   }
   return `<div class="preview-head">
-      <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(e.name)} <span style="color:var(--faint);font-size:11px">${fmtSize(e.size)}</span></span>
+      <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(e.name)} <span style="color:var(--faint);font-size:12px">${fmtSize(e.size)}</span></span>
       <span style="display:flex;gap:6px">
         <button class="btn sm ghost" data-act="file-open-system">用本机程序打开</button>
         <button class="btn sm ghost" data-act="file-close">关闭</button>
@@ -904,7 +904,7 @@ function viewSettings() {
 
   <div class="card set-block">
     <div class="card-title">数据</div>
-    <div class="row-sub" style="margin-bottom:12px">数据库：<code style="font-family:var(--mono);font-size:11.5px">data\\workbench.db</code>；备份时把整个文件夹复制走即可。</div>
+    <div class="row-sub" style="margin-bottom:12px">数据库：<code style="font-family:var(--mono);font-size:12.5px">data\\workbench.db</code>；备份时把整个文件夹复制走即可。</div>
     <div style="display:flex;gap:8px">
       <button class="btn sm ghost" data-act="export-json">导出全部数据为 JSON</button>
     </div>
