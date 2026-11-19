@@ -1,0 +1,19 @@
+# 数据与配置不进仓库（含个人数据、路径、API Key）
+data/
+config.json
+*.db
+*.db-shm
+*.db-wal
+
+# 日志与临时脚本
+*.log
+_t.js
+_selftest.js
+_seed.js
+_cleanup.js
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
